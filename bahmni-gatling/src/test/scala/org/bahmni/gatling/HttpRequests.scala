@@ -296,4 +296,18 @@ object HttpRequests {
     http("get patient image")
       .get("/openmrs/ws/rest/v1/patientImage?patientUuid=2e1a2899-409c-40c4-b8fd-3476bb11dce3&q=2016-12-06T12:19:15.166Z")
   }
+
+  def createPatientRequest: HttpRequestBuilder = {
+    http("create patient")
+      .post("/openmrs/ws/rest/v1/bahmnicore/patientprofile")
+      .body(RawFileBody("patient_profile.json"))
+      .asJSON
+  }
+
+  def startVisitRequest(patient_uuid : String): HttpRequestBuilder = {
+    http("start visit")
+      .post("/openmrs/ws/rest/v1/visit")
+      .body(StringBody(s"""{"patient":"$patient_uuid","visitType":"f6ce7bf9-e349-11e3-983a-91270dcbd3bf","location":"a447a087-166e-40b0-bf9e-973af073ec5b"}"""))
+      .asJSON
+  }
 }

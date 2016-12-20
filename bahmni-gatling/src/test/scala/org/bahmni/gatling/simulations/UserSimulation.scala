@@ -20,8 +20,9 @@ class UserSimulation extends Simulation {
     AtomfeedScenarios.labFeedContent.inject(Load.ATOMFEED_USER_PROFILE).protocols(HTTP_PROTOCOL)*/
 
 
-    Clinical_Dashboard_View_Name_Search_Flow.scn.inject(rampUsers(20) over 3).protocols(HTTPS_PROTOCOL)
-    //Registration_Exact_Search_Flow.scn.inject(rampUsers(3) over 10).protocols(HTTPS_PROTOCOL)
+    //Clinical_Dashboard_View_Name_Search_Flow.scn.inject(rampUsers(20) over 3).protocols(HTTPS_PROTOCOL),
+    //Registration_Exact_Search_Flow.scn.inject(rampUsers(3) over 10).protocols(HTTPS_PROTOCOL),
+    PatientCreateAndStartVisitFlow.scn.inject(rampUsers(3) over 10).protocols(HTTPS_PROTOCOL)
   )
     .assertions(global.successfulRequests.percent.gte(90))
 }
