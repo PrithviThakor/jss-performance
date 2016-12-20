@@ -1,2 +1,13 @@
-bahmni-gatling/target/*
-bahmni-gatling/.idea/*
+.classpath
+.project
+.settings
+target
+.idea/
+.gradle/
+*.iml
+*/build/
+*.xmi
+logs/
+reports/
+out/
+.DS_Store

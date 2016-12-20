@@ -19,11 +19,9 @@ object PatientCreateAndStartVisitFlow {
         jsonPath("$.patient.uuid").saveAs("patient_uuid"),
         status.is(200)
       ).resources(
-          startVisitRequest("${patient_uuid}").check(status.is(201)),
-          getPatient("${patient_uuid}")
+          getPatient("${patient_uuid}"),
+          startVisitRequest("${patient_uuid}").check(status.is(201))
         )
-
-
   )
 
   val scn : ScenarioBuilder = scenario("create Patient and start visit")
