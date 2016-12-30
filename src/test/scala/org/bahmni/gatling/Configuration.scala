@@ -6,8 +6,8 @@ import io.gatling.http.Predef._
 object Configuration {
 
   object Constants {
-    val BASE_HTTPS_URL = "https://product-qa09.mybahmni.org"
-    val BASE_HTTP_URL = "http://localhost:9001"
+    val BASE_HTTPS_URL = "https://product-qa09.mybahmni.local"
+    val BASE_HTTP_URL = "http://product-qa09.mybahmni.local:8050"
     val LOGIN_USER = "superman"
     val LOGIN_USER_UUID = "cac3a2c0-4929-4103-90da-de7f99573aab"
     val PROVIDER_UUID = "d390d057-ec33-45c1-8342-9e23d706aa4d"
@@ -25,8 +25,8 @@ object Configuration {
     //val RADIOLOGY_ORDER_TYPE_UUID = "244b43be-28f1-11e4-86a0-005056822b0b" // possible DB
     val RADIOLOGY_ORDER_TYPE_UUID = "8189dbdd-3f10-11e4-adec-0800271c1b75"
     val USG_ORDER_TYPE_UUID = "c39840d9-57a1-11e6-8158-d4ae52d4c69b"
-    var ENCOUNTER_TYPE_UUID = "24482b92-28f1-11e4-86a0-005056822b0b"
-    var ATOMFEED_ENCOUNTER_UUID = "1b5e768d-3c07-4bfb-8195-cc1f768d29d6"
+    var ENCOUNTER_TYPE_UUID = "da7a4fe0-0a6a-11e3-939c-8c50edb4be99"
+    var ATOMFEED_ENCOUNTER_UUID = "5ec7042b-3998-4eec-95a7-74d81a871057"
     //val ALL_TESTS_AND_PANELS ="24d98284-28f1-11e4-86a0-005056822b0b" //possible DB
     val ALL_TESTS_AND_PANELS ="e4edc5a4-e349-11e3-983a-91270dcbd3bf"
   }
@@ -42,7 +42,7 @@ object Configuration {
       .acceptLanguageHeader("en-US,en;q=0.8")
       .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36");
     val HTTP_PROTOCOL = http
-      .baseURL("http://localhost:9001")
+      .baseURL("http://product-qa09.mybahmni.local:8050")
 
       .inferHtmlResources()
       .basicAuth("superman", "Admin123")
@@ -54,7 +54,7 @@ object Configuration {
 
   object Load {
     var ATOMFEED_USER_PROFILE = rampUsers(3) over 10
-    var DURATION = 600
+    var DURATION = 10800
   }
 
 }

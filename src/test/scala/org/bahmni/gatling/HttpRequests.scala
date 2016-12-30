@@ -71,7 +71,7 @@ object HttpRequests {
   }
 
   def searchPatientUsingIdentifier(loginLocationUuid: String, identifier: String): HttpRequestBuilder = {
-    http("search patient " + identifier)
+    http("Search Patient by Identifier")
       .get("/openmrs/ws/rest/v1/bahmnicore/search/patient")
       .queryParam("loginLocationUuid", loginLocationUuid)
       .queryParam("identifier", identifier)
@@ -85,7 +85,7 @@ object HttpRequests {
 
 
   def searchPatientUsingName(loginLocationUuid: String, identifier: String): HttpRequestBuilder = {
-    http("search patient " + identifier)
+    http("Search Patient by Name")
       .get("/openmrs/ws/rest/v1/bahmnicore/search/patient")
       .queryParam("loginLocationUuid", loginLocationUuid)
       .queryParam("q", identifier)

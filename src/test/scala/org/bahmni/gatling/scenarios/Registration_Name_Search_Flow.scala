@@ -3,10 +3,10 @@ package org.bahmni.gatling.scenarios
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
 import org.bahmni.gatling.Configuration
-import org.bahmni.gatling.HttpRequests._
 import org.bahmni.gatling.Configuration.Constants._
+import org.bahmni.gatling.HttpRequests._
 
-object Registration_Exact_Search_Flow {
+object Registration_Name_Search_Flow {
 
   val login: ChainBuilder = exec(
     getLoginLocations
@@ -39,20 +39,20 @@ object Registration_Exact_Search_Flow {
 
   )
 
-  def performSearch(patientIdentifier: String): ChainBuilder = {
+  def performSearch(patientName: String): ChainBuilder = {
     exec(
-      searchPatientUsingIdentifier(LOGIN_LOCATION_UUID, patientIdentifier)
+      searchPatientUsingName(LOGIN_LOCATION_UUID, patientName)
     )
   }
 
 
-  val scn: ScenarioBuilder = scenario("registerPatient")
+  val scn: ScenarioBuilder = scenario("NameSearch")
     .during(Configuration.Load.DURATION) {
       exec(login)
-        .feed(csv("patient.csv").circular)
+        .feed(csv("patientName.csv").circular)
         .exec(goToHomePage)
         .exec(goToRegistrationSearchPage)
-        .exec(performSearch("${PATIENT_IDENTIFIER}"))
+        .exec(performSearch("${PATIENT_NAME}"))
         .pause(20)
 
     }
